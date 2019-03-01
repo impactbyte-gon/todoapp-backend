@@ -17,6 +17,7 @@ let todos = [
   }
 ]
 
+// app.get('/todos')
 router.get('/', (req, res, next) => {
   res.send({
     message: 'Get All Todos',
@@ -24,6 +25,7 @@ router.get('/', (req, res, next) => {
   })
 })
 
+// app.post('/todos')
 router.post('/', (req, res, next) => {
   const newTodos = todos.concat({
     id: nextId,
