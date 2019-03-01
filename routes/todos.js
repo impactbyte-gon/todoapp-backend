@@ -1,7 +1,8 @@
 var express = require('express')
 var router = express.Router()
 
-const todos = [
+let nextId = 4
+let todos = [
   {
     id: 1,
     text: 'Learning JavaScript'
@@ -16,10 +17,24 @@ const todos = [
   }
 ]
 
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
   res.send({
-    message: 'Todos',
+    message: 'Get All Todos',
     data: todos
+  })
+})
+
+router.post('/', (req, res, next) => {
+  const newTodos = todos.concat({
+    id: nextId,
+    text: req.body.text
+  })
+  todos = newTodos
+  nextId++
+
+  res.send({
+    message: 'Created New Todo',
+    newTodos: newTodos
   })
 })
 

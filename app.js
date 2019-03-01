@@ -3,6 +3,7 @@ const createError = require('http-errors')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
+const cors = require('cors')
 
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
@@ -10,6 +11,7 @@ const todosRouter = require('./routes/todos')
 
 const app = express()
 
+app.use(cors()) // to handle different port request
 app.use(logger('dev'))
 app.use(express.json()) // bodyParser
 app.use(cookieParser())
