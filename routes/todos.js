@@ -1,19 +1,11 @@
 var express = require('express')
 var router = express.Router()
 
-let nextId = 4
+let nextId = 1
 let todos = [
   {
     id: 1,
-    text: 'Learning JavaScript'
-  },
-  {
-    id: 2,
-    text: 'Learning to Work'
-  },
-  {
-    id: 3,
-    text: 'Learning GitHub'
+    text: 'Learning'
   }
 ]
 
@@ -27,15 +19,17 @@ router.get('/', (req, res, next) => {
 
 // app.post('/todos')
 router.post('/', (req, res, next) => {
-  const newTodos = todos.concat({
+  const todo = {
     id: nextId,
     text: req.body.text
-  })
+  }
+  const newTodos = todos.concat(todo)
   todos = newTodos
   nextId++
 
   res.send({
     message: 'Created New Todo',
+    todo: todo,
     newTodos: newTodos
   })
 })
