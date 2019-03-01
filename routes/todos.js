@@ -20,7 +20,7 @@ let todos = [
 router.get('/', (req, res, next) => {
   res.send({
     message: 'Get All Todos',
-    data: todos
+    todos: todos
   })
 })
 
